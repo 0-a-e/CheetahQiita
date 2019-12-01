@@ -14,12 +14,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'view.html',
 })
 export class ViewPage {
-
+  body: object;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    try{
+      this.body = navParams.get("body");
+      console.log(navParams.get("body"));
+      } catch (err) {
+        console.log(err);
+    }
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewPage');
+
+    try {
+
+      console.log(this.body);
+    } catch (err) { 
+      console.log(err);
+    }
   }
 
 }

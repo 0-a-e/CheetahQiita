@@ -10,9 +10,9 @@ export class HomePage {
   kiji: Object;
   constructor(public navCtrl: NavController, private http: HttpClient) {
   }
-  click(url) {
-    console.log(url);
-    this.navCtrl.push(ViewPage);
+  click(body) {
+    console.log(body);
+    this.navCtrl.push(ViewPage, { "body": body });
   }
   async ge(refresher) {
     console.log("ge is RUN");
