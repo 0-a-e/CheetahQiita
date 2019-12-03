@@ -26,7 +26,7 @@ export class ContactPage {
     console.log(ki);
     this.storage.get(ki).then((val) => {
       console.log(val);
-      this.navCtrl.push(ViewPage, { "body": val, "rendbody": val, "title": ki, "com":"d" });
+      this.navCtrl.push(ViewPage, {"jsons": val, "com":"d" });
     });
   }
   ionViewDidEnter() {

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController,LoadingController } from 'ionic-angular';
 import { ViewPage } from '../view/view';
 import { HttpClient } from '@angular/common/http';
+import { jsonpCallbackContext } from '@angular/common/http/src/module';
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
@@ -15,10 +16,10 @@ export class AboutPage {
     console.log(ev);
     this.gech(ev);
   }
-  click(body,MD,title) {
-    console.log(body);
-    console.log(MD);
-    this.navCtrl.push(ViewPage, { "body": body, "rendbody":body,"title":title });
+  click(jsons) {
+    console.log(jsons);
+   // console.log(MD);
+    this.navCtrl.push(ViewPage, {"jsons":jsons});
   }
   async ge(refresher) {
     console.log("ge is RUN");

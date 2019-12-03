@@ -10,6 +10,7 @@ import { ContactPage } from '../contact/contact';
 export class ViewPage {
   bod: object;
   title: any;
+  jsons: any;
   com: any;
   bts: any;
   created: any;
@@ -26,82 +27,40 @@ export class ViewPage {
 'margin': '0 auto'
     }
   constructor(public toastController: ToastController,private storage: Storage,public navCtrl: NavController, public navParams: NavParams) {
-    try {
-      this.bod = navParams.get("rendbody");
-      this.title = this.navParams.get("title");
+  //    this.bod = navParams.get("rendbody");
+  //    this.title = this.navParams.get("title");
       this.com = this.navParams.get("com");
-      try {
-        this.created = this.navParams.get("created");
-      } catch (err) { 
-        this.created = "このデーターはオフラインでは表示されません。";
-      }
-      try {
-        this.updated = this.navParams.get("updated");
-      } catch (err) { 
-        this.updated = "このデーターはオフラインでは表示されません。";
-      }
-      try {
-        this.Likecount = this.navParams.get("Likecount");
-      } catch (err) { 
-        this.Likecount = "このデーターはオフラインでは表示されません。";
-      }
-      try {
-        this.tag = this.navParams.get("tag");
-      } catch (err) { 
-        this.tag = "このデーターはオフラインでは表示されません。";
-      }
-      try {
-        this.url = this.navParams.get("url");
-      } catch (err) { 
-        this.url = "このデーターはオフラインでは表示されません。";
-      }
-      try {
-        this.name = this.navParams.get("name");
-      } catch (err) { 
-        this.name = "このデーターはオフラインでは表示されません。";
-      }
-      try {
-        this.userdesc = this.navParams.get("UDS");
-      } catch (err) { 
-        this.userdesc = "このデーターはオフラインでは表示されません。";
-      }
-      try {
-        this.PFIU = this.navParams.get("pfim");
-      } catch (err) { 
-        this.PFIU = "このデーターはオフラインでは表示されません。";
-      }
+    this.jsons = this.navParams.get("jsons");
+    this.bod = this.jsons["rendered_body"];
+    this.title = this.jsons["title"];
       if (this.com == "d") {
         this.bts = "trash";
       } else {
         this.bts = "add";
       }
-      
-      console.log(navParams.get("rendbody"));
-      } catch (err) {
-        console.log(err);
-    }
   }
+
   ionViewCanEnter() {
     console.log('ionViewDidLoad ViewPage');
 
-    try {
-      this.bod = this.navParams.get("rendbody");
-      this.title = this.navParams.get("title");
+    //  this.bod = this.navParams.get("rendbody");
+  //    this.title = this.navParams.get("title");
+  this.jsons = this.navParams.get("jsons");
       this.com = this.navParams.get("com");
+      this.bod = this.jsons["rendered_body"];
+      this.title = this.jsons["title"];
       if (this.com == "d") {
         this.bts = "trash";
       } else {
         this.bts = "add";
       }
       console.log(this.bod);
-    } catch (err) { 
-      console.log(err);
-    }
+      console.log(this.created);
   }
   TNE() { 
     console.log("RUN");
     var title = this.title;
-    var inner = this.bod;
+    var inner = this.jsons;
     var INE = String(inner);
     console.log(INE);
     console.log(title);
@@ -117,7 +76,7 @@ export class ViewPage {
 
     } else {
       try {
-        this.storage.set(title, INE);
+        this.storage.set(title, this.jsons);
         const toast = this.toastController.create({
           message: '記事をダウンロードしました。[保存済み]の項目からオフライン時も閲覧することができます。',
           duration: 2000

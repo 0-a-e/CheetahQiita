@@ -25,7 +25,7 @@ background: #e5e5e5; border-radius: 50px;
     </ion-refresher-content>
     </ion-refresher>
     <ion-list>
-      <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ.rendered_body,kiZ.body,kiZ.title)">
+      <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
           <ion-label>{{kiZ.title}}</ion-label>
         </ion-item>
     </ion-list>

@@ -24,11 +24,11 @@ export class HomePage {
       console.log(err);
     }
   }
-  click(body,MD,title) {
-    if (body) {
-      console.log(body);
-      console.log(MD);
-        this.navCtrl.push(ViewPage, { "body": body, "rendbody": body,"title":title });
+  click(jsons) {
+    if (jsons) {
+  //    console.log(body);
+   //   console.log(MD);
+        this.navCtrl.push(ViewPage, { "jsons":jsons });
     }
   }
   async ge(refresher) {
