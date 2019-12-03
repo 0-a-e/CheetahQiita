@@ -25,7 +25,26 @@ export class ViewPage {
     'width': '90%',
       'text-align': 'start',
 'margin': '0 auto'
-    }
+  }
+  tagstyle = {
+    'pointer-events': 'none',
+  'background-color': '#EFF4FF',
+  'border': 'none',
+  'color': '#2557D6',
+    'padding': '10px 20px',
+  'max-width':'100px',
+  'text-align': 'center',
+  'text-decoration': 'none',
+  'display': 'inline-block',
+  'margin-right': '13px',
+  'margin-left': '-1px',
+  'margin-bottom': '10px',
+  'border-radius': '100px',
+  }
+  goodstyle = {
+    'font-size': '40px',
+    'color': '#387EF5'
+  }
   constructor(public toastController: ToastController,private storage: Storage,public navCtrl: NavController, public navParams: NavParams) {
   //    this.bod = navParams.get("rendbody");
   //    this.title = this.navParams.get("title");
@@ -33,6 +52,13 @@ export class ViewPage {
     this.jsons = this.navParams.get("jsons");
     this.bod = this.jsons["rendered_body"];
     this.title = this.jsons["title"];
+    this.created = this.jsons["created_at"];
+    this.updated = this.jsons["updated_at"];
+    this.Likecount = this.jsons["likes_count"];
+    this.tag = this.jsons["tags"];
+    this.url = this.jsons["url"];
+    this.name = this.jsons["user"]["name"];
+    this.PFIU = this.jsons["user"]["profile_image_url"]
       if (this.com == "d") {
         this.bts = "trash";
       } else {
