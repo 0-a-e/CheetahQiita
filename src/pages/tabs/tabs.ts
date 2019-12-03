@@ -12,8 +12,13 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = AboutPage;
   tab3Root = ContactPage;
-
   constructor() {
 
+  }
+  ngAfterViewInit() {
+ //   setTimeout(() => {
+   // console.log("this.HomePage");
+  //  this.tab1Root.select(1);
+    //   }, 500);
   }
 }

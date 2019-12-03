@@ -3,7 +3,15 @@
     <ion-title>ホーム</ion-title>
   </ion-navbar>
 </ion-header>
+<style>
+  .custom-skeleton ion-skeleton-text {
+  line-height: 13px;
+}
 
+.custom-skeleton ion-skeleton-text:last-child {
+  margin-bottom: 5px;
+}
+  </style>
 <ion-content padding>
     <ion-refresher
     (ionRefresh)="ge($event)">
@@ -15,4 +23,9 @@
             <ion-label>{{kiZ.title}}</ion-label>
           </ion-item>
       </ion-list>
+
+
+      <div *ngIf="!kiji">
+        読み込み中...
+  </div>
 </ion-content>

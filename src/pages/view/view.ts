@@ -14,10 +14,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'view.html',
 })
 export class ViewPage {
-  body: object;
+  bod: object;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     try{
-      this.body = navParams.get("body");
+      this.bod = navParams.get("body");
       console.log(navParams.get("body"));
       } catch (err) {
         console.log(err);
@@ -29,7 +29,7 @@ export class ViewPage {
 
     try {
 
-      console.log(this.body);
+      console.log(this.bod);
     } catch (err) { 
       console.log(err);
     }

@@ -1,11 +1,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      検索
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <div padding>
+    <ion-input #inputs style="background: #e5e5e5; border-radius: 50px;" ion-input placeholder="入力して検索"></ion-input>
+    <button ion-button (click)="onKey(inputs.value)" style="border-radius: 50px; width: 100%;" expand="block"><ion-icon name="search"></ion-icon></button>
+  </div>
+    <ion-refresher
+    (ionRefresh)="ge($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+      <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ.body)">
+          <ion-label>{{kiZ.title}}</ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>

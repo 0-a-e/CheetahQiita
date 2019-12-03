@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ViewPage } from './view';
-import { MarkdownModule } from '../../../node_modules/ngx-markdown'
+import { MdToHtmlPipe } from '../../pipes/md-to-html/md-to-html';
 
 @NgModule({
   declarations: [
     ViewPage,
+    MdToHtmlPipe
   ],
   imports: [
-    MarkdownModule.forChild(),
     IonicPageModule.forChild(ViewPage),
   ],
 })
