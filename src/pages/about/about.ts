@@ -15,9 +15,10 @@ export class AboutPage {
     console.log(ev);
     this.gech(ev);
   }
-  click(body) {
+  click(body,MD,title) {
     console.log(body);
-    this.navCtrl.push(ViewPage, { "body": body, "rendbody":body });
+    console.log(MD);
+    this.navCtrl.push(ViewPage, { "body": body, "rendbody":body,"title":title });
   }
   async ge(refresher) {
     console.log("ge is RUN");

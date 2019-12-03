@@ -4,17 +4,30 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+<style>
+#header {
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 25vh;
+}
+
+ion-fab {
+  position: fixed;
+  bottom:60px;
+  right: 20px;
+}
+  </style>
 <ion-header>
   <ion-navbar>
-    <ion-title>view</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content>
-    <button ion-fab vertical="top" horizontal="end" slot="fixed">
-        <ion-fab-button>
+    <ion-fab horizontal="end" vertical="buttom" slot="fixed" edge>
+        <button ion-fab>
           <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </button>
+        </button>
+    </ion-fab>
 <div [innerHTML]='bod'>
 </div>
 

@@ -17,7 +17,7 @@
     </ion-refresher-content>
     </ion-refresher>
     <ion-list>
-      <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ.rendered_body)">
+      <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ.rendered_body,kiZ.body,kiZ.title)">
           <ion-label>{{kiZ.title}}</ion-label>
         </ion-item>
     </ion-list>
