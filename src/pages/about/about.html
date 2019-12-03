@@ -3,30 +3,32 @@
 transition: 0.3s;
 background: #e5e5e5; border-radius: 50px;
   }
+ion-spinner{
+  position: relative;
+  z-index: 200;
+  }
 #inputs:focus{
   box-shadow: 0px 0px 5px 1px #999999;
 }
   </style>
 <ion-header>
   <ion-navbar>
-      <ion-searchbar #inputs animated></ion-searchbar>
-      <button ion-button (click)="onKey(inputs.value)" style="border-radius: 10px; width: 100%;" expand="block"><ion-icon name="search"></ion-icon></button>
+      <ion-searchbar (keyup)="onKey(inputs.value)" #inputs animated></ion-searchbar>
+      <!--<button ion-button (click)="" style="border-radius: 10px; width: 100%;" expand="block"><ion-icon name="search"></ion-icon></button>-->
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div padding>
-  <!--  <ion-input #inputs id="inputs" ion-input placeholder="入力して検索..."></ion-input>-->
-   
-  </div>
-    <ion-refresher
-    (ionRefresh)="ge($event)">
-    <ion-refresher-content>
-    </ion-refresher-content>
-    </ion-refresher>
+    <p *ngIf="SN">{{SN}}の検索結果を表示しています:</p>
     <ion-list>
       <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
           <ion-label>{{kiZ.title}}</ion-label>
         </ion-item>
     </ion-list>
+    <div [innerHTML]="spn"></div>
+    <div *ngIf="!kiji && !spn" style="text-align: center; color:#606060;">
+        <ion-icon style="font-size: 80px;" name="search"></ion-icon>
+
+        <p>まだ何も検索していないか、検索結果が見つかりません。</p>
+        </div>
 </ion-content>

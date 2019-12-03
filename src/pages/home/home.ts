@@ -8,6 +8,7 @@ import { ViewPage } from '../view/view';
 })
 export class HomePage {
   kiji: Object;
+  spn: any;
   constructor(public navCtrl: NavController, private http: HttpClient) {
   }
   ionViewDidLoad() {
@@ -18,7 +19,9 @@ export class HomePage {
         .subscribe(res => {
           console.log(res);
           this.kiji = res;
-        })
+        }, error => {
+          this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2>';
+      });
     } catch (err) { 
       console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
       console.log(err);
@@ -43,6 +46,7 @@ export class HomePage {
       this.kiji = res;
       refresher.complete();
     } catch (err) { 
+      this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2><p>' + err["status"] +err["error"]["message"] + '.</p>';
       console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
       console.log(err);
       refresher.complete();

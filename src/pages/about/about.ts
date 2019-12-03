@@ -9,6 +9,16 @@ import { jsonpCallbackContext } from '@angular/common/http/src/module';
   templateUrl: 'about.html'
 })
 export class AboutPage {
+  spn: any;
+  SN: any;
+  si = {
+    'width': '80px',
+    'height': '80px',
+    'color':'#EFF4FF'
+  }
+  pi = {
+    'color':'pink'
+  }
   kiji: Object;
   constructor(private http: HttpClient,public navCtrl: NavController,public loadingController: LoadingController) {
   }
@@ -21,34 +31,34 @@ export class AboutPage {
    // console.log(MD);
     this.navCtrl.push(ViewPage, {"jsons":jsons});
   }
-  async ge(refresher) {
-    console.log("ge is RUN");
-    try {
-      const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100")
-        .toPromise();
-      console.log(res);
+  //async ge(refresher) {
+ // console.log("ge is RUN");
+ //   try {
+ //   const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100")
+ //   .toPromise();
+//      console.log(res);
       //    NE = res["0"]["title"];
-      this.kiji = res;
-      refresher.complete();
-    } catch (err) { 
-      console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
-      console.log(err);
-      refresher.complete();
-    }
-  }
+ //     this.kiji = res;
+ //     refresher.complete();
+  //  } catch (err) { 
+ //     console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
+//      console.log(err);
+//      refresher.complete();
+//    }
+//  }
   async gech(TX) {
     console.log("gech is RUN");
     try {
-      const loading = this.loadingController.create({
-        duration: 2000
-      });
-      loading.present();
+      this.spn = '<ion-spinner [ngStyle]="si"></ion-spinner>';
       const res =  await this.http.get("https://qiita.com/api/v2/items?per_page=100&query=" + TX)
         .toPromise();
+      this.SN = TX;
       console.log(res);
       //    NE = res["0"]["title"];
       this.kiji = res;
     } catch (err) { 
+
+      this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2><p>' + err["status"] +err["error"]["message"] + '.</p>';
       console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
       console.log(err);
     }
