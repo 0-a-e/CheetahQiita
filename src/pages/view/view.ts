@@ -12,6 +12,14 @@ export class ViewPage {
   title: any;
   com: any;
   bts: any;
+  created: any;
+  updated: any;
+  Likecount: any;
+  tag: any;
+  url: any;
+  name: any;
+  userdesc: any;
+  PFIU: any;
   myStyles = {
     'width': '90%',
       'text-align': 'start',
@@ -22,6 +30,46 @@ export class ViewPage {
       this.bod = navParams.get("rendbody");
       this.title = this.navParams.get("title");
       this.com = this.navParams.get("com");
+      try {
+        this.created = this.navParams.get("created");
+      } catch (err) { 
+        this.created = "このデーターはオフラインでは表示されません。";
+      }
+      try {
+        this.updated = this.navParams.get("updated");
+      } catch (err) { 
+        this.updated = "このデーターはオフラインでは表示されません。";
+      }
+      try {
+        this.Likecount = this.navParams.get("Likecount");
+      } catch (err) { 
+        this.Likecount = "このデーターはオフラインでは表示されません。";
+      }
+      try {
+        this.tag = this.navParams.get("tag");
+      } catch (err) { 
+        this.tag = "このデーターはオフラインでは表示されません。";
+      }
+      try {
+        this.url = this.navParams.get("url");
+      } catch (err) { 
+        this.url = "このデーターはオフラインでは表示されません。";
+      }
+      try {
+        this.name = this.navParams.get("name");
+      } catch (err) { 
+        this.name = "このデーターはオフラインでは表示されません。";
+      }
+      try {
+        this.userdesc = this.navParams.get("UDS");
+      } catch (err) { 
+        this.userdesc = "このデーターはオフラインでは表示されません。";
+      }
+      try {
+        this.PFIU = this.navParams.get("pfim");
+      } catch (err) { 
+        this.PFIU = "このデーターはオフラインでは表示されません。";
+      }
       if (this.com == "d") {
         this.bts = "trash";
       } else {
@@ -34,23 +82,6 @@ export class ViewPage {
     }
   }
   ionViewCanEnter() {
-    console.log('ionViewDidLoad ViewPage');
-
-    try {
-      this.bod = this.navParams.get("rendbody");
-      this.title = this.navParams.get("title");
-      this.com = this.navParams.get("com");
-      if (this.com == "d") {
-        this.bts = "trash";
-      } else {
-        this.bts = "add";
-      }
-      console.log(this.bod);
-    } catch (err) { 
-      console.log(err);
-    }
-  }
-  ionViewDidEnter() {
     console.log('ionViewDidLoad ViewPage');
 
     try {

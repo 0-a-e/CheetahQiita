@@ -29,7 +29,7 @@ export class ContactPage {
       this.navCtrl.push(ViewPage, { "body": val, "rendbody": val, "title": ki, "com":"d" });
     });
   }
-  ionViewDidLoad() {
+  ionViewDidEnter() {
  // let items = [];
  // this.list =  this.storage.keys()
  //   .then(keys => Promise.all(keys.map(k => this.storage.get(k))));
@@ -39,5 +39,16 @@ export class ContactPage {
   console.table(k)
   this.list = k
 });
-}
+  }
+  ionViewCanEnter() {
+    // let items = [];
+    // this.list =  this.storage.keys()
+    //   .then(keys => Promise.all(keys.map(k => this.storage.get(k))));
+    //   console.log(this.list);
+   
+    this.storage.keys().then((k) => {
+     console.table(k)
+     this.list = k
+   });
+   }
 }
