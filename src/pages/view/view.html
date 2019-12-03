@@ -16,7 +16,11 @@ ion-fab {
   bottom:60px;
   right: 20px;
 }
+p {
+  width: 80%;
+}
   </style>
+
 <ion-header>
   <ion-navbar>
     <ion-title>{{title}}</ion-title>
@@ -25,7 +29,7 @@ ion-fab {
 <ion-content>
     <ion-fab horizontal="end" vertical="buttom" slot="fixed" edge>
         <button (click)="TNE()" ion-fab>
-          <ion-icon name="add"></ion-icon>
+          <ion-icon [name]="bts"></ion-icon>
         </button>
     </ion-fab>
 <div [innerHTML]='bod'>

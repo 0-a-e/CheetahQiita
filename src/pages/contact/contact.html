@@ -7,10 +7,21 @@
 </ion-header>
 
 <ion-content>
+
     <ion-list>
         <ion-item *ngFor="let ki of list" (click)="click(ki)">
             <ion-label>{{ki}}</ion-label>
           </ion-item>
       </ion-list>
-    
+      <div *ngIf="!list" style="text-align: center;">
+         <p>まだ保存した記事がありません。</p>
+         </div>
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="ge($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="dots"
+            loadingText="読み込み中...">
+          </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
 </ion-content>
