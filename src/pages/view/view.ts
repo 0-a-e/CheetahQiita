@@ -13,7 +13,7 @@ export class ViewPage {
   com: any;
   bts: any;
   myStyles = {
-    'width': '80%',
+    'width': '90%',
       'text-align': 'start',
 'margin': '0 auto'
     }
