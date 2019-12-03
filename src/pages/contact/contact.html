@@ -13,9 +13,11 @@
             <ion-label>{{ki}}</ion-label>
           </ion-item>
       </ion-list>
+
       <div *ngIf="!list" style="text-align: center;">
          <p>まだ保存した記事がありません。</p>
          </div>
+         
          <ion-refresher
          (ionRefresh)="ge($event)">
          <ion-refresher-content>

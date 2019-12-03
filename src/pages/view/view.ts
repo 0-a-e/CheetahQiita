@@ -33,8 +33,24 @@ export class ViewPage {
         console.log(err);
     }
   }
+  ionViewCanEnter() {
+    console.log('ionViewDidLoad ViewPage');
 
-  ionViewDidLoad() {
+    try {
+      this.bod = this.navParams.get("rendbody");
+      this.title = this.navParams.get("title");
+      this.com = this.navParams.get("com");
+      if (this.com == "d") {
+        this.bts = "trash";
+      } else {
+        this.bts = "add";
+      }
+      console.log(this.bod);
+    } catch (err) { 
+      console.log(err);
+    }
+  }
+  ionViewDidEnter() {
     console.log('ionViewDidLoad ViewPage');
 
     try {
