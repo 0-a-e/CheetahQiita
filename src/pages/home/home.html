@@ -26,6 +26,13 @@
 
 
       <div *ngIf="!kiji">
-        読み込み中...
+          <ion-spinner name="dots"></ion-spinner>
+          読み込み中...
   </div>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="ge($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="dots"
+        loadingText="読み込み中...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>

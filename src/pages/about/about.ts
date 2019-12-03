@@ -22,7 +22,7 @@ export class AboutPage {
   async ge(refresher) {
     console.log("ge is RUN");
     try {
-      const res = await this.http.get("https://qiita.com/api/v2/items?per_page=20")
+      const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100")
         .toPromise();
       console.log(res);
       //    NE = res["0"]["title"];
@@ -41,7 +41,7 @@ export class AboutPage {
         duration: 2000
       });
       loading.present();
-      const res =  await this.http.get("https://qiita.com/api/v2/items?per_page=40&query=" + TX)
+      const res =  await this.http.get("https://qiita.com/api/v2/items?per_page=100&query=" + TX)
         .toPromise();
       console.log(res);
       //    NE = res["0"]["title"];

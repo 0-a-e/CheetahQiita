@@ -14,7 +14,7 @@ export class HomePage {
     try {
       let headers = new HttpHeaders();
       headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-      const res = this.http.get("https://qiita.com/api/v2/items?per_page=20")
+      const res = this.http.get("https://qiita.com/api/v2/items?per_page=100")
         .subscribe(res => {
           console.log(res);
           this.kiji = res;
@@ -33,7 +33,7 @@ export class HomePage {
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     console.log("ge is RUN");
     try {
-      const res = await this.http.get("https://qiita.com/api/v2/items?per_page=20")
+      const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100")
         .toPromise();
       console.log(res);
       //    NE = res["0"]["title"];
