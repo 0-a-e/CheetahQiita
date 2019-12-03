@@ -32,7 +32,8 @@ p {
           <ion-icon [name]="bts"></ion-icon>
         </button>
     </ion-fab>
-<div [innerHTML]='bod'>
+    <div style="text-align: center; width: 100%; height: 100%;">
+<div [ngStyle]="myStyles" [innerHTML]='bod'>
 </div>
-
+</div>
 </ion-content>

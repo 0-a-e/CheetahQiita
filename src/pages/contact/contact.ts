@@ -17,7 +17,7 @@ export class ContactPage {
         console.table(k)
         this.list = k
       });
-      refresher.complete();
+      setTimeout(() => {refresher.complete(), 5000});
     } catch (err) { 
       console.log(err);
     }

@@ -12,6 +12,11 @@ export class ViewPage {
   title: any;
   com: any;
   bts: any;
+  myStyles = {
+    'width': '80%',
+      'text-align': 'start',
+'margin': '0 auto'
+    }
   constructor(public toastController: ToastController,private storage: Storage,public navCtrl: NavController, public navParams: NavParams) {
     try {
       this.bod = navParams.get("rendbody");
