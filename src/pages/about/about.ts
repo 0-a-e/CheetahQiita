@@ -17,7 +17,7 @@ export class AboutPage {
   }
   click(body) {
     console.log(body);
-    this.navCtrl.push(ViewPage, { "body": body });
+    this.navCtrl.push(ViewPage, { "body": body, "rendbody":body });
   }
   async ge(refresher) {
     console.log("ge is RUN");

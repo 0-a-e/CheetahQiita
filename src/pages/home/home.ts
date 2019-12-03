@@ -25,8 +25,10 @@ export class HomePage {
     }
   }
   click(body) {
-    console.log(body);
-    this.navCtrl.push(ViewPage, { "body": body });
+    if (body) {
+        console.log(body);
+        this.navCtrl.push(ViewPage, { "body": body, "rendbody": body });
+    }
   }
   async ge(refresher) {
     let headers = new HttpHeaders();

@@ -9,8 +9,13 @@
     <ion-title>view</ion-title>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-{{bod}}
+<ion-content>
+    <button ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button>
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </button>
+<div [innerHTML]='bod'>
+</div>
 
 </ion-content>
