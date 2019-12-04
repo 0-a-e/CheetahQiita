@@ -15,6 +15,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 })
 export class UserviewPage {
   user: any;
+  org: any;
   iid: any;
   resp: any;
   name: any;
@@ -32,6 +33,7 @@ export class UserviewPage {
   AFB: any;
   ALI: any;
   AGI: any;
+  locate: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
   }
   ionViewDidLoad() {
@@ -48,7 +50,8 @@ export class UserviewPage {
       .subscribe(res => {
         this.resp = res;
         console.log(this.resp);
-
+        this.locate = res["location"];
+        this.org = res["organization"];
         this.trn('name', "name");
         this.tryn('desc', "description");
         this.tryin('pfi', 'profile_image_url');
