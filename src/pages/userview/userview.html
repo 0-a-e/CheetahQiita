@@ -1,0 +1,30 @@
+<!--
+  Generated template for the UserviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{iid}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div style="text-align: center; width: 100%;margin: 0 auto;">
+  <img style="width: 60%; border-radius: 500px;" [src]="pfi">
+  <h3>{{iid}}</h3>
+  <h5>{{name}}</h5>
+  <p>{{desc}}</p>
+<hr>
+  <div style="width: 100%; text-align: center">
+      <div style="display: flex; width:  100%;">
+      <button ion-button [disabled]="!Fgi" style="margin: 0;float: left; padding: 13px; height: 70px; width: 25%; border-radius: 150px 0px 0px 150px ;" (click)="golink(AGI)"><ion-icon style="font-size: 50px;" name="logo-github"></ion-icon></button>
+      <button ion-button [disabled]="!Fli" style="margin: 0;padding: 13px; height: 70px; width: 25%; border-radius: 0px;" (click)="golink(ALI)"><ion-icon style="font-size: 40px;" name="logo-linkedin"></ion-icon></button>
+      <button ion-button [disabled]="!FTW" style="margin: 0;padding: 13px; height: 70px; width: 25%; border-radius: 0px;" (click)="golink(ATW)"><ion-icon style="font-size: 40px;" name="logo-twitter"></ion-icon></button>
+      <button ion-button [disabled]="!FFB" style="margin: 0;float:right; padding: 13px; height: 70px; width: 25%; border-radius: 0px 150px 150px 0px;" (click)="golink(AFB)"><ion-icon style="font-size: 50px;" name="logo-facebook"></ion-icon></button>
+      </div>
+      </div>
+  </div>
+<hr>
+</ion-content>

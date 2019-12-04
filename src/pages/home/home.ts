@@ -28,7 +28,7 @@ export class HomePage {
         .subscribe(res => {
           console.log(res);
           this.kiji = res;
-          this.Fsave = res:
+          this.Fsave = res;
         }, error => {
           this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2>';
       });

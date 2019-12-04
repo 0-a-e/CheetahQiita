@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { ContactPage } from '../contact/contact';
+import { UserviewPage } from '../userview/userview';
 @IonicPage()
 @Component({
   selector: 'page-view',
@@ -14,6 +15,7 @@ export class ViewPage {
   com: any;
   bts: any;
   created: any;
+  user: any;
   updated: any;
   Likecount: any;
   tag: any;
@@ -83,6 +85,10 @@ export class ViewPage {
       }
       console.log(this.bod);
       console.log(this.created);
+  }
+  userinfo() {
+    this.user = this.jsons["user"];
+    this.navCtrl.push(UserviewPage, { "user":this.user });
   }
   TNE() { 
     console.log("RUN");
