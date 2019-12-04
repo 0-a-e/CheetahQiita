@@ -7,10 +7,8 @@ import { HTTP } from '@ionic-native/http/ngx';
 @NgModule({
   declarations: [
     HomePageModule,
-    PopComponent,
     PopoverController
   ], entryComponents: [ 
-    PopComponent,
     PopoverController
   ],
   imports: [
