@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UitemlistPage } from '../uitemlist/uitemlist';
 /**
  * Generated class for the UserviewPage page.
  *
@@ -120,6 +121,9 @@ export class UserviewPage {
       an = "この項目はユーザーが設定していません。";
       console.log(err);
     }
+  }
+  viewItem() {
+    this.navCtrl.push(UitemlistPage, { "user":this.iid });
   }
   golink(m) {
     console.log(m);

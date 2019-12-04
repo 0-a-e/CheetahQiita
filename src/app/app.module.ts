@@ -13,6 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { ViewPage } from '../pages/view/view';
 import { PopPage } from '../pages/pop/pop';
+import { UitemlistPage } from '../pages/uitemlist/uitemlist';
 import { UserviewPage } from '../pages/userview/userview';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,6 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     ViewPage,
     PopPage,
+    UitemlistPage,
     UserviewPage
   ],
   imports: [
@@ -44,6 +46,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage,
     TabsPage,
     ViewPage,
+    UitemlistPage,
     PopPage,
     UserviewPage
   ],
