@@ -1,0 +1,20 @@
+<!--
+  Generated template for the PopPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>メニュー</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div [innerHTML]="sld"></div>
+  <div *ngIf="!sld">
+  <ion-list *ngFor="let ki of LI">
+      <ion-item (click)="click(ki)"> <ion-icon style="font-size: 24px; color: #606060;" [name]="ki.logo"></ion-icon>      {{ki.description}}</ion-item>
+  </ion-list>
+  </div>
+</ion-content>

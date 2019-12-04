@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,PopoverController } from 'ionic-angular';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { ViewPage } from '../view/view';
+import { PopPage } from '../pop/pop';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -9,8 +10,12 @@ import { ViewPage } from '../view/view';
 export class HomePage {
   kiji: Object;
   spn: any;
-  constructor(public navCtrl: NavController, private http: HttpClient) {
+  constructor(public popoverController: PopoverController,public navCtrl: NavController, private http: HttpClient) {
   }
+ presentPopover() {
+  this.navCtrl.push(PopPage);
+  }
+
   ionViewDidLoad() {
     try {
       let headers = new HttpHeaders();

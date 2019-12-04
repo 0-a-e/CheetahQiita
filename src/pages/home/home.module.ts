@@ -1,12 +1,17 @@
 import { NgModule,Component } from '@angular/core';
-import { IonicPageModule,NavController } from 'ionic-angular';
+import { IonicPageModule,NavController,PopoverController, Popover } from 'ionic-angular';
 import { HomePage } from './home';
 import { ViewPage } from '../view/view';
 import { HttpClientModule,HttpHeaders } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 @NgModule({
   declarations: [
-    HomePage
+    HomePageModule,
+    PopComponent,
+    PopoverController
+  ], entryComponents: [ 
+    PopComponent,
+    PopoverController
   ],
   imports: [
       IonicPageModule.forChild(HomePage),
