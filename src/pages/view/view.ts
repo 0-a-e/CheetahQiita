@@ -20,6 +20,7 @@ export class ViewPage {
   url: any;
   name: any;
   userdesc: any;
+  usurl: any;
   PFIU: any;
   myStyles = {
     'width': '90%',
@@ -27,10 +28,9 @@ export class ViewPage {
 'margin': '0 auto'
   }
   tagstyle = {
-    'pointer-events': 'none',
   'background-color': '#EFF4FF',
   'border': 'none',
-  'color': '#2557D6',
+    'color': '#2557D6',
     'padding': '10px 20px',
   'max-width':'100px',
   'text-align': 'center',
@@ -42,6 +42,7 @@ export class ViewPage {
   'border-radius': '100px',
   }
   goodstyle = {
+    'text-decoration':'none',
     'font-size': '40px',
     'color': '#387EF5'
   }
@@ -58,14 +59,14 @@ export class ViewPage {
     this.tag = this.jsons["tags"];
     this.url = this.jsons["url"];
     this.name = this.jsons["user"]["name"];
-    this.PFIU = this.jsons["user"]["profile_image_url"]
+    this.PFIU = this.jsons["user"]["profile_image_url"];
+    this.usurl = 'https://qiita.com/' + this.jsons["user"]["id"];
       if (this.com == "d") {
         this.bts = "trash";
       } else {
         this.bts = "add";
       }
   }
-
   ionViewCanEnter() {
     console.log('ionViewDidLoad ViewPage');
 
@@ -113,4 +114,8 @@ export class ViewPage {
       }
     }
   }
+  ta(ins) { 
+    console.log(ins);
+    window.open('https://qiita.com/tags/' + ins + '/', '_system')
+    }
 }
