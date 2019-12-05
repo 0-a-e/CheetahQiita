@@ -109,6 +109,9 @@ export class ViewPage {
     this.user = this.jsons["user"];
     this.navCtrl.push(UserviewPage, { "user":this.user });
   }
+  CMUSI(us) {
+    this.navCtrl.push(UserviewPage, { "user":us });
+  }
   TNE() { 
     console.log("RUN");
     var title = this.title;
