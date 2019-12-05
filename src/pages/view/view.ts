@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,ToastController } from 'ionic-angul
 import { Storage } from '@ionic/storage';
 import { ContactPage } from '../contact/contact';
 import { UserviewPage } from '../userview/userview';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 @IonicPage()
 @Component({
   selector: 'page-view',
@@ -13,6 +14,8 @@ export class ViewPage {
   title: any;
   jsons: any;
   com: any;
+  itemid: any;
+  comment: any;
   bts: any;
   created: any;
   user: any;
@@ -48,7 +51,7 @@ export class ViewPage {
     'font-size': '40px',
     'color': '#387EF5'
   }
-  constructor(public toastController: ToastController,private storage: Storage,public navCtrl: NavController, public navParams: NavParams) {
+  constructor( private http: HttpClient,public toastController: ToastController,private storage: Storage,public navCtrl: NavController, public navParams: NavParams) {
   //    this.bod = navParams.get("rendbody");
   //    this.title = this.navParams.get("title");
       this.com = this.navParams.get("com");
@@ -59,6 +62,7 @@ export class ViewPage {
     this.updated = this.jsons["updated_at"];
     this.Likecount = this.jsons["likes_count"];
     this.tag = this.jsons["tags"];
+    this.itemid = this.jsons["id"];
     this.url = this.jsons["url"];
     this.name = this.jsons["user"]["name"];
     this.PFIU = this.jsons["user"]["profile_image_url"];
@@ -68,12 +72,25 @@ export class ViewPage {
       } else {
         this.bts = "add";
       }
+      let headers = new HttpHeaders();
+      headers = headers.set('Content-Type', 'application/json; charset=utf-8');
+      const res = this.http.get("https://qiita.com/api/v2/items/"+this.itemid+"/comments")
+        .subscribe(res => {
+          console.log(res);
+          this.comment = res;
+    //      this.kiji = res;
+    //      this.Fsave = res;
+        }, error => {
+    //      this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2>';
+      });
   }
+ /*
   ionViewCanEnter() {
     console.log('ionViewDidLoad ViewPage');
 
     //  this.bod = this.navParams.get("rendbody");
-  //    this.title = this.navParams.get("title");
+    //
+    this.title = this.navParams.get("title");
   this.jsons = this.navParams.get("jsons");
       this.com = this.navParams.get("com");
       this.bod = this.jsons["rendered_body"];
@@ -84,8 +101,10 @@ export class ViewPage {
         this.bts = "add";
       }
       console.log(this.bod);
-      console.log(this.created);
+    console.log(this.created);
+  
   }
+  */
   userinfo() {
     this.user = this.jsons["user"];
     this.navCtrl.push(UserviewPage, { "user":this.user });
