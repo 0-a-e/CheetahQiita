@@ -26,6 +26,10 @@ export class AboutPage {
     this.gech(ev, n);
     console.log("N is ", n);
   }
+  ionB(ivl) { 
+    console.log("ionb");
+    this.gech(ivl);
+  }
   click(jsons) {
     console.log(jsons);
    // console.log(MD);
@@ -49,8 +53,8 @@ export class AboutPage {
   NDE(TX) { 
 
     try {
-      this.timerId = setTimeout(() => this.RE(TX), 1000);
-    } catch (err) {
+      this.RE(TX);
+        } catch (err) {
       this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2><p>' + err["status"] + err["error"]["message"] + '.</p>';
       console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
       console.log(err);
@@ -76,14 +80,10 @@ export class AboutPage {
       console.log(err);
     }
 }
-  async gech(TX, m) {
+  async gech(TX) {
     
     console.log("gech is RUN");
-    if (m) {
-      console.log(this.timerId);
-      clearTimeout(this.timerId);
-      console.log(this.timerId);
-    } else {
+    if (TX) {
       this.NDE(TX);
     }
   }

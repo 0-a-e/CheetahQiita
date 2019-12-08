@@ -1,5 +1,6 @@
 import { NgModule,Component } from '@angular/core';
-import { IonicPageModule,NavController,PopoverController, Popover } from 'ionic-angular';
+import {
+  IonicPageModule, NavController, PopoverController} from 'ionic-angular';
 import { HomePage } from './home';
 import { ViewPage } from '../view/view';
 import { HttpClientModule,HttpHeaders } from '@angular/common/http';

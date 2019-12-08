@@ -13,7 +13,7 @@ ion-spinner{
   </style>
 <ion-header>
   <ion-navbar>
-      <ion-searchbar (keydown)="onKey(inputs.value,inputs.value)" (keyup)="onKey(inputs.value)" #inputs animated></ion-searchbar>
+      <ion-searchbar (search)="ionB(inputs.value)" #inputs animated></ion-searchbar>
       <!--<button ion-button (click)="" style="border-radius: 10px; width: 100%;" expand="block"><ion-icon name="search"></ion-icon></button>-->
   </ion-navbar>
 </ion-header>

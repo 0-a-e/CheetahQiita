@@ -22,6 +22,8 @@ export class ViewPage {
   updated: any;
   Likecount: any;
   tag: any;
+  Duid: any;
+  Diid: any;
   url: any;
   name: any;
   userdesc: any;
@@ -62,6 +64,8 @@ export class ViewPage {
     this.updated = this.jsons["updated_at"];
     this.Likecount = this.jsons["likes_count"];
     this.tag = this.jsons["tags"];
+    this.Duid = this.navParams.get("usernameid");
+    this.Diid = this.navParams.get("itemid");
     this.itemid = this.jsons["id"];
     this.url = this.jsons["url"];
     this.name = this.jsons["user"]["name"];
