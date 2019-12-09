@@ -13,6 +13,7 @@ export class AboutPage {
   spn: any;
   SN: any;
   timerId: any;
+  def: any;
   si = {
   }
   pi = {
@@ -21,10 +22,8 @@ export class AboutPage {
   kiji: Object;
   constructor(private http: HttpClient,public navCtrl: NavController,public loadingController: LoadingController) {
   }
-  onKey(ev,n) { 
-    console.log(ev);
-    this.gech(ev, n);
-    console.log("N is ", n);
+  ionViewCanEnter() { 
+    this.def = null;
   }
   ionB(ivl) { 
     console.log("ionb");
@@ -63,8 +62,11 @@ export class AboutPage {
   }
   async RE(TX) {
     try {
+      this.def = " ";
+      console.log(this.def);
       this.spn = '<div padding><ion-spinner name="dots"></ion-spinner></div><p>読み込み中...</p>';
-      setTimeout(() => this.spn='<ion-icon style="font-size: 80px;" name="search"></ion-icon><p>まだ何も検索していないか、検索結果が見つかりません。</p>', 5000);
+
+      setTimeout(() => this.spn='<ion-icon style="font-size: 80px;" name="search"></ion-icon><p>ネットワークに接続されていないか、検索結果が見つかりません。</p>', 10000);
       const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100&query=" + TX)
         .toPromise();
       this.SN = TX;
@@ -81,7 +83,6 @@ export class AboutPage {
     }
 }
   async gech(TX) {
-    
     console.log("gech is RUN");
     if (TX) {
       this.NDE(TX);
