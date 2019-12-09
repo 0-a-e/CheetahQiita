@@ -14,6 +14,7 @@ export class AboutPage {
   SN: any;
   timerId: any;
   def: any;
+  emp: any;
   si = {
   }
   pi = {
@@ -64,11 +65,15 @@ export class AboutPage {
     try {
       this.def = " ";
       console.log(this.def);
-      this.spn = '<div padding><ion-spinner name="dots"></ion-spinner></div><p>読み込み中...</p>';
+      this.spn = '込み中..';
 
       setTimeout(() => this.spn='<ion-icon style="font-size: 80px;" name="search"></ion-icon><p>ネットワークに接続されていないか、検索結果が見つかりません。</p>', 10000);
       const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100&query=" + TX)
         .toPromise();
+        if (Object.keys(res).length == 0) {
+          console.log("emp");
+          this.emp = "emp";
+      }
       this.SN = TX;
       console.log(res);
       //    NE = res["0"]["title"];
@@ -77,7 +82,7 @@ export class AboutPage {
     //  }
       this.kiji = res;
     }catch (err) {
-      this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2><p>' + err["status"] + err["error"]["message"] + '.</p>';
+      this.spn = 'しください。</h2';
       console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
       console.log(err);
     }
