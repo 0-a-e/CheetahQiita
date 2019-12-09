@@ -126,16 +126,18 @@ export class ViewPage {
 
     if (this.bts == "trash") {
       this.storage.remove(title);
+      this.bts = "add";
       const toast = this.toastController.create({
         message: 'ダウンロード済みの記事記事を削除しました。',
         duration: 2000
       });
       toast.present();
-      this.navCtrl.push(ContactPage);
+  //    this.navCtrl.push(ContactPage);
 
     } else {
       try {
         this.storage.set(title, this.jsons);
+        this.bts = "trash";
         const toast = this.toastController.create({
           message: '記事をダウンロードしました。[保存済み]の項目からオフライン時も閲覧することができます。',
           duration: 2000
