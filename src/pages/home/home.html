@@ -1,9 +1,44 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>ホーム</ion-title><!--<button ion-button (click)="presentPopover()"><ion-icon name="more"></ion-icon></button>-->
-  </ion-navbar>
-</ion-header>
+
 <style>
+ .progress {
+  max-width: 100%;
+ /* margin: 0.5em auto;*/
+  overflow: hidden;
+  background: #ddd;
+}
+.indeterminate {
+	position: relative;
+	width: 100%;
+	height: 0.3em;
+	transform: translateZ(0);
+}
+	.indeterminate:before, .indeterminate:after {
+	  content: '';
+	  position: absolute;
+	  background-color: #387EF5;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+
+	.indeterminate:before { 
+		animation: indeterminate 3s cubic-bezier(0.195, 0.360, 0.945, 1.650) infinite;
+	}
+	.indeterminate:after { 
+	  animation: indeterminate 3s cubic-bezier(0.900, -0.590, 0.715, 1.045) infinite;
+	}
+@keyframes indeterminate {
+  0% {
+  	width: 0%;
+	  transform: translateX(-100%);
+  }
+  100% {
+  	width: 100%;
+	  transform: translateX(100%);
+ 	}
+}
+
   .custom-skeleton ion-skeleton-text {
   line-height: 13px;
 }
@@ -12,6 +47,14 @@
   margin-bottom: 5px;
 }
   </style>
+
+<ion-header>
+    <ion-navbar>
+        <div *ngIf="!kiji && !spn" class="progress indeterminate"></div>
+      <ion-title>ホーム</ion-title><!--<button ion-button (click)="presentPopover()"><ion-icon name="more"></ion-icon></button>-->
+    </ion-navbar>
+  </ion-header>
+
 <ion-content padding>
     <ion-refresher
     (ionRefresh)="ge($event)">
