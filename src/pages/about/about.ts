@@ -12,6 +12,8 @@ import { REACTIVE_DRIVEN_DIRECTIVES } from '@angular/forms/src/directives';
 export class AboutPage {
   spn: any;
   SN: any;
+  err: any;
+  Kebid: any;
   timerId: any;
   def: any;
   emp: any;
@@ -24,9 +26,11 @@ export class AboutPage {
   constructor(private http: HttpClient,public navCtrl: NavController,public loadingController: LoadingController) {
   }
   ionViewCanEnter() { 
+    this.Kebid = false;
     this.def = null;
   }
   ionB(ivl) { 
+    this.Kebid = false;
     console.log("ionb");
     this.gech(ivl);
   }
@@ -70,6 +74,7 @@ export class AboutPage {
       setTimeout(() => this.spn='<ion-icon style="font-size: 80px;" name="search"></ion-icon><p>ネットワークに接続されていないか、検索結果が見つかりません。</p>', 10000);
       const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100&query=" + TX)
         .toPromise();
+      this.Kebid = true;
         if (Object.keys(res).length == 0) {
           console.log("emp");
           this.emp = "emp";
@@ -83,6 +88,7 @@ export class AboutPage {
       this.kiji = res;
     }catch (err) {
       this.spn = 'しください。</h2';
+      this.err = "f";
       console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
       console.log(err);
     }
