@@ -62,21 +62,20 @@
     <ion-refresher-content>
     </ion-refresher-content>
   </ion-refresher>
-
+  <div [innerHTML]="spn"></div>
+  <div *ngIf="!kiji && !spn" style="text-align: center;">
+    <h1></h1>
+      <ion-spinner></ion-spinner>
+     <p>読み込み中...</p>
+</div>
     <ion-list id ="list">
         <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
             <ion-label>{{kiZ.title}}</ion-label>
           </ion-item>
       </ion-list>
-
-<div [innerHTML]="spn"></div>
-      <div *ngIf="!kiji && !spn" style="text-align: center;">
-          
-         <p>読み込み中...</p>
-    </div>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="gs($event)">
       <ion-infinite-scroll-content
-        loadingSpinner="dots"
+        loadingSpinner="crescent"
         loadingText="読み込み中...">
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
