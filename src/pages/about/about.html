@@ -60,7 +60,7 @@ ion-spinner{
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
     <p *ngIf="SN">{{SN}}の検索結果を表示しています:</p>
     <ion-list>
       <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">

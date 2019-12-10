@@ -1,9 +1,11 @@
 
 <style>
  .progress {
+   position: absolute;
   max-width: 100%;
  /* margin: 0.5em auto;*/
   overflow: hidden;
+  margin-top: 0px;
   background: #ddd;
 }
 .indeterminate {
@@ -49,13 +51,12 @@
   </style>
 
 <ion-header>
+    <div *ngIf="!kiji && !spn" class="progress indeterminate"></div>
     <ion-navbar>
-        <div *ngIf="!kiji && !spn" class="progress indeterminate"></div>
       <ion-title>ホーム</ion-title><!--<button ion-button (click)="presentPopover()"><ion-icon name="more"></ion-icon></button>-->
     </ion-navbar>
   </ion-header>
-
-<ion-content padding>
+<ion-content>
     <ion-refresher
     (ionRefresh)="ge($event)">
     <ion-refresher-content>

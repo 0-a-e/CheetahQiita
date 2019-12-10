@@ -51,7 +51,7 @@ export class HomePage {
     const list = document.getElementById('list');
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-    console.log("ge is RUN");
+    console.log("running> gs");
     try {
       const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100&page=" + this.count)
         .toPromise(); 
