@@ -40,7 +40,18 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222
 );
-
+.toolbar-title {
+  text-align: center;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+background-color: #121212;
+color: #fff;
+}
+ion-app.md {
+  background-color: #121212;
+}
+}
 
 // App iOS Variables
 // --------------------------------------------------
