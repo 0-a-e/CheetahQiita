@@ -21,6 +21,7 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "^5.2.11",
     "@ionic-native/barcode-scanner": "^5.17.1",
+    "@ionic-native/code-push": "^5.18.0",
     "@ionic-native/core": "^4.20.0",
     "@ionic-native/deeplinks": "^5.17.1",
     "@ionic-native/http": "^5.17.1",
@@ -31,12 +32,19 @@
     "@types/showdown": "^1.9.3",
     "angular-marked": "^1.2.2",
     "angularfire2": "^5.2.3",
+    "code-push": "^3.0.1",
     "cordova-android": "8.1.0",
     "cordova-plugin-advanced-http": "^2.3.0",
-    "cordova-plugin-file": "^6.0.2",
+    "cordova-plugin-code-push": "^1.12.0",
+    "cordova-plugin-dialogs": "^2.0.2",
+    "cordova-plugin-file": "^4.3.3",
+    "cordova-plugin-file-transfer": "^1.6.3",
+    "cordova-plugin-zip": "^3.1.0",
     "cordova-sqlite-storage": "^3.4.1",
     "firebase": "^7.5.1",
+    "g": "^2.0.1",
     "highlight.js": "^9.16.2",
+    "ionic": "^5.4.13",
     "ionic-angular": "3.9.5",
     "ionic-framework": "^2.0.0-beta.2",
     "ionic-plugin-deeplinks": "^1.0.20",
@@ -96,7 +104,11 @@
         "DEEPLINK_4_HOST": " ",
         "DEEPLINK_5_SCHEME": " ",
         "DEEPLINK_5_HOST": " "
-      }
+      },
+      "cordova-plugin-code-push": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-file-transfer": {},
+      "cordova-plugin-zip": {}
     },
     "platforms": [
       "android"

@@ -13,6 +13,8 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { ViewPage } from '../pages/view/view';
+//import { CodePush } from "@ionic-native/code-push/ngx";
+//import { CodePush } from "@ionic-native/code-push/ngx";
 import { PopPage } from '../pages/pop/pop';
 import { UitemlistPage } from '../pages/uitemlist/uitemlist';
 import { UserviewPage } from '../pages/userview/userview';
@@ -53,6 +55,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   providers: [
     StatusBar,
+//   CodePush,
     SplashScreen,
     Deeplinks,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
