@@ -8,6 +8,85 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'page-view',
   templateUrl: 'view.html',
+  styles: [
+    `
+    :host /deep/ .pod {
+      text-align: start;
+      margin: 0 auto;
+      color: #1a1a1a;
+      width: 90%;
+    }
+    :host /deep/ .c1 { 
+      color:#9dabae ;
+      }
+      :host /deep/ .cs { 
+        color:#9dabae ;
+        }
+        :host /deep/ .cpf { 
+          color:#9dabae ;
+          }
+    :host /deep/ pre { 
+      padding: 10px;
+      border-radius: 5px;
+      background: #364549;
+      color: #e5e5e5;
+      }
+      :host /deep/ .s2 { 
+        color: #41b7d7;
+        }
+        :host /deep/ .kn { 
+          color: #ff8095;
+          }
+          :host /deep/ .k { 
+            color: #ebd247;
+            }
+            :host /deep/ .kd { 
+              color: #ebd247;
+              }
+              :host /deep/ .kc { 
+                color: #ebd247;
+                }
+                :host /deep/ .kr { 
+                  color: #ebd247;
+                  }
+            //
+            :host /deep/ .ow { 
+              color: #ff8095;
+              }
+              :host /deep/ .o { 
+                color: #ff8095;
+                }
+              :host /deep/ .s { 
+                color: #41b7d7;
+                }
+                :host /deep/ .s1 { 
+                  color: #41b7d7;
+                  }
+                  :host /deep/ .dl { 
+                    color: #41b7d7;
+                    }
+                    :host /deep/ .nf { 
+                      color:#8bdf4c;
+                      }
+                      :host /deep/  .nx  { 
+                        color:#8bdf4c;
+                        }
+                        :host /deep/ .ne { 
+                          color:#8bdf4c;
+                          }
+                          :host /deep/  .nc  { 
+                            color:#8bdf4c;
+                            }
+                            :host /deep/ .nd { 
+                              color:#8bdf4c;
+                              }
+                              :host /deep/ .na { 
+                                color:#8bdf4c;
+                                }
+
+
+      `
+    ]
 })
 export class ViewPage {
   bod: object;
@@ -24,16 +103,15 @@ export class ViewPage {
   tag: any;
   Duid: any;
   Diid: any;
+  Sstyle: any;
   url: any;
   name: any;
   userdesc: any;
   usurl: any;
   PFIU: any;
-  myStyles = {
-    'width': '90%',
-      'text-align': 'start',
-'margin': '0 auto'
-  }
+
+  addstyle = "'pre': {'background: '606060'}"
+
   tagstyle = {
   'background-color': '#EFF4FF',
   'border': 'none',
@@ -71,6 +149,7 @@ export class ViewPage {
     this.name = this.jsons["user"]["name"];
     this.PFIU = this.jsons["user"]["profile_image_url"];
     this.usurl = 'https://qiita.com/' + this.jsons["user"]["id"];
+    this.Sstyle = this.addstyle;
       if (this.com == "d") {
         this.bts = "trash";
       } else {

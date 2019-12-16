@@ -7,14 +7,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicApp, IonicModule, IonicErrorHandler,NavController } from 'ionic-angular';
 import { Deeplinks } from '@ionic-native/deeplinks/ngx';
 import { MyApp } from './app.component';
+import { Firebase } from '@ionic-native/firebase/ngx';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { ViewPage } from '../pages/view/view';
-//import { CodePush } from "@ionic-native/code-push/ngx";
-//import { CodePush } from "@ionic-native/code-push/ngx";
+//import { CodePush } from "@ionic-native/code-push";
+//import { CodePush } from "@ionic-native/code-push";
 import { PopPage } from '../pages/pop/pop';
 import { UitemlistPage } from '../pages/uitemlist/uitemlist';
 import { UserviewPage } from '../pages/userview/userview';
@@ -56,6 +57,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
 //   CodePush,
+    Firebase,
     SplashScreen,
     Deeplinks,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

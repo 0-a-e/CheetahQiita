@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "672959310675",
+    "firebase_url": "https://qiite-588da.firebaseio.com",
+    "project_id": "qiite-588da",
+    "storage_bucket": "qiite-588da.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672959310675:android:73ff8411152bd215bf0fa6",
+        "android_client_info": {
+          "package_name": "com.orange.qiite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672959310675-5k0b6oearquq8v099lprip4r1v01n62a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD0jE1JltLYVrPm_DFSxVVf5VWcdQ8Vkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672959310675-5k0b6oearquq8v099lprip4r1v01n62a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
