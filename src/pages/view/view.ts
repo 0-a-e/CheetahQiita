@@ -16,6 +16,14 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
       color: #1a1a1a;
       width: 90%;
     }
+    :host /deep/ .pod > h1 { 
+      font-size: 1.8em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: .1em;
+      }
+        :host /deep/ .pod > h3 { 
+          font-size: 1.4em;
+          }
     :host /deep/ .c1 { 
       color:#9dabae ;
       }
@@ -30,6 +38,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
       border-radius: 5px;
       background: #364549;
       color: #e5e5e5;
+      font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
       }
       :host /deep/ .s2 { 
         color: #41b7d7;
