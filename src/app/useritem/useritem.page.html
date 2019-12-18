@@ -1,9 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>useritem</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+          </ion-buttons>
+      <ion-title>{{ID}}さんの記事</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+      <ion-list>
+          <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
+              <ion-label>{{kiZ.title}}</ion-label>
+            </ion-item>
+        </ion-list>
+  
+  <div [innerHTML]="spn"></div>
+  </ion-content>

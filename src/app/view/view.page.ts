@@ -207,7 +207,7 @@ export class ViewPage {
   }
  
   ionViewCanEnter() {
-    console.log('ionViewDidLoad ViewPage');
+    console.log('ionViewCanEnter ViewPage');
       if (this.com == "d") {
         this.bts = "trash";
       } else {

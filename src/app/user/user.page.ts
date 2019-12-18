@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router,NavigationExtras } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 //import { UitemlistPage } from '../uitemlist/uitemlist';
@@ -133,6 +133,13 @@ export class UserPage {
     }
   }
   viewItem() {
+    let navJ: NavigationExtras = {
+      state: {
+        inner: this.iid
+       }
+     };
+     console.log(navJ);
+     this.router.navigate(['useritem'],navJ);
    // this.navCtrl.push(UitemlistPage, { "user":this.iid });
   }
   golink(m) {
