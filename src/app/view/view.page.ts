@@ -1,5 +1,5 @@
 //import { ViewPage } from './view.page';
-import { Routes } from '@angular/router';
+import { Routes,NavigationExtras } from '@angular/router';
 import { Component,OnInit } from '@angular/core';
 import { NavController, NavParams,ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
@@ -152,7 +152,6 @@ export class ViewPage {
     public toastController: ToastController,
     private storage: Storage,
     public navCtrl: NavController) {
-  //    this.bod = navParams.get("rendbody");
     console.log("constructor boot");
     this.route.queryParams.subscribe(params => {
       console.log("recive booted");
@@ -163,10 +162,16 @@ export class ViewPage {
       console.log(this.jsons);
     } else {
       console.log("dont recived");
+      }
+      if (this.router.getCurrentNavigation().extras.state.com) {
+        this.com = this.router.getCurrentNavigation().extras.state.com;
+        this.set();
+      console.log("this.com is");
+      console.log(this.com);
+    } else {
+      console.log("dont recived");
     }
   });
-  //    this.title = this.navParams.get("title");
-     // this.com = this.navParams.get("com");
   }
   set() {
     this.bod = this.jsons["rendered_body"];
@@ -183,12 +188,12 @@ export class ViewPage {
     this.PFIU = this.jsons["user"]["profile_image_url"];
     this.usurl = 'https://qiita.com/' + this.jsons["user"]["id"];
     this.Sstyle = this.addstyle;
+    let headers = new HttpHeaders();
     if (this.com == "d") {
       this.bts = "trash";
     } else {
       this.bts = "add";
     }
-    let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     const res = this.http.get("https://qiita.com/api/v2/items/"+this.itemid+"/comments")
       .subscribe(res => {
@@ -200,17 +205,9 @@ export class ViewPage {
   //      this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2>';
     });
   }
- /*
+ 
   ionViewCanEnter() {
     console.log('ionViewDidLoad ViewPage');
-
-    //  this.bod = this.navParams.get("rendbody");
-    //
-    this.title = this.navParams.get("title");
-  this.jsons = this.navParams.get("jsons");
-      this.com = this.navParams.get("com");
-      this.bod = this.jsons["rendered_body"];
-      this.title = this.jsons["title"];
       if (this.com == "d") {
         this.bts = "trash";
       } else {
@@ -220,17 +217,22 @@ export class ViewPage {
     console.log(this.created);
   
   }
-  */
+  
   userinfo() {
     this.user = this.jsons["user"];
-    this.navCtrl.navigateForward(`/userview/`);
-  }
-  CMUSI(us) {
-    this.navCtrl.navigateForward(`/userview/`);
+    let navJ: NavigationExtras = {
+      state: {
+       inner: this.user
+       }
+    };
+    
+     console.log(navJ);
+     this.router.navigate(['user'],navJ);
   }
   async rm() {
     this.storage.remove(this.title);
     this.bts = "add";
+    console.log(this.bts);
     this.toast.show('ダウンロード済みの記事を削除しました。', '2000', 'center').subscribe(
       toast => {
         console.log(toast);
@@ -248,7 +250,7 @@ export class ViewPage {
 
     if (this.bts == "trash") {
       console.log(title);
-   //   this.rm(title);
+      this.rm();
     } else {
       try {
         this.storage.set(title, this.jsons);

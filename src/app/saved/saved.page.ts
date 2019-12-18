@@ -18,14 +18,15 @@ export class SavedPage {
 
     
   async ge(refresher) {
-
+    console.log("run GE");
     try {
       this.storage.keys().then((k) => {
         console.table(k);
         this.list = k;
       });
-        setTimeout(() => { refresher.complete(), 5000 });
-      } catch (err) {
+      refresher.target.complete();
+    } catch (err) {
+      setTimeout(() => { refresher.target.complete(), 3000 });
         console.log(err);
       }
   }
