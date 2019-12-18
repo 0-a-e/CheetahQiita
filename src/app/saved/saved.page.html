@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        保存した記事
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+      <ion-list>
+          <ion-item *ngFor="let ki of list" (click)="click(ki)">
+              <ion-label>{{ki}}</ion-label>
+            </ion-item>
+        </ion-list>
+  
+        <div *ngIf="!list" style="text-align: center;">
+          <p>まだ保存した記事がありません。</p>
+          </div>
+          
+          <ion-refresher
+          (ionRefresh)="ge($event)" slot="fixed">
+          <ion-refresher-content>
+          </ion-refresher-content>
+          </ion-refresher>
+  
+  </ion-content>
+  

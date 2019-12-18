@@ -1,0 +1,83 @@
+
+<style>
+    .progress {
+      position: absolute;
+     max-width: 100%;
+    /* margin: 0.5em auto;*/
+     overflow: hidden;
+     margin-top: 0px;
+     background: #ddd;
+   }
+   .indeterminate {
+     position: relative;
+     width: 100%;
+     height: 0.3em;
+     transform: translateZ(0);
+   }
+     .indeterminate:before, .indeterminate:after {
+       content: '';
+       position: absolute;
+       background-color: #387EF5;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+     }
+   
+     .indeterminate:before { 
+       animation: indeterminate 3s cubic-bezier(0.195, 0.360, 0.945, 1.650) infinite;
+     }
+     .indeterminate:after { 
+       animation: indeterminate 3s cubic-bezier(0.900, -0.590, 0.715, 1.045) infinite;
+     }
+   @keyframes indeterminate {
+     0% {
+       width: 0%;
+       transform: translateX(-100%);
+     }
+     100% {
+       width: 100%;
+       transform: translateX(100%);
+      }
+   }
+   
+     .custom-skeleton ion-skeleton-text {
+     line-height: 13px;
+   }
+   
+   .custom-skeleton ion-skeleton-text:last-child {
+     margin-bottom: 5px;
+   }
+     </style>
+   
+   <ion-header>
+       <div *ngIf="!kiji && !spn" class="progress indeterminate"></div>
+       <ion-toolbar>
+         <ion-title>ホーム</ion-title><!--<button ion-button (click)="presentPopover()"><ion-icon name="more"></ion-icon></button>-->
+       </ion-toolbar>
+     </ion-header>
+   <ion-content>
+       <ion-refresher
+       (ionRefresh)="ge($event)">
+       <ion-refresher-content>
+       </ion-refresher-content>
+     </ion-refresher>
+     <div [innerHTML]="spn"></div>
+     <div *ngIf="!kiji && !spn" style="text-align: center;">
+       <h1></h1>
+         <ion-spinner></ion-spinner>
+        <p>読み込み中...</p>
+   </div>
+       <ion-list id ="list">
+           <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
+               <ion-label>{{kiZ.title}}</ion-label>
+             </ion-item>
+         </ion-list>
+     <ion-infinite-scroll threshold="100px" (ionInfinite)="gs($event)">
+         <ion-infinite-scroll-content
+           loadingSpinner="crescent"
+           loadingText="読み込み中...">
+         </ion-infinite-scroll-content>
+       </ion-infinite-scroll>
+   </ion-content>
+   

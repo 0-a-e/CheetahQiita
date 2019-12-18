@@ -1,0 +1,79 @@
+<style>
+    .progress {
+    max-width: 100%;
+   /* margin: 0.5em auto;*/
+    overflow: hidden;
+    background: #ddd;
+  }
+  .indeterminate {
+    position: relative;
+    width: 100%;
+    height: 0.3em;
+    transform: translateZ(0);
+  }
+    .indeterminate:before, .indeterminate:after {
+      content: '';
+      position: absolute;
+      background-color: #387EF5;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .indeterminate:before { 
+      animation: indeterminate 3s cubic-bezier(0.195, 0.360, 0.945, 1.650) infinite;
+    }
+    .indeterminate:after { 
+      animation: indeterminate 3s cubic-bezier(0.900, -0.590, 0.715, 1.045) infinite;
+    }
+  @keyframes indeterminate {
+    0% {
+      width: 0%;
+      transform: translateX(-100%);
+    }
+    100% {
+      width: 100%;
+      transform: translateX(100%);
+     }
+  }
+  
+    #inputs {
+  transition: 0.3s;
+  background: #e5e5e5; border-radius: 50px;
+    }
+  ion-spinner{
+    position: relative;
+    z-index: 200;
+    }
+  #inputs:focus{
+    box-shadow: 0px 0px 5px 1px #999999;
+  }
+    </style>
+  <ion-header>
+    <ion-toolbar>
+      <div *ngIf="def && !Kebid">
+        <div class="progress indeterminate"></div>
+        </div>
+        <ion-searchbar (search)="ionB(inputs.value)" #inputs animated></ion-searchbar>
+        <!--<button ion-button (click)="" style="border-radius: 10px; width: 100%;" expand="block"><ion-icon name="search"></ion-icon></button>-->
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+      <p *ngIf="SN">{{SN}}の検索結果を表示しています:</p>
+      <ion-list>
+        <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
+            <ion-label>{{kiZ.title}}</ion-label>
+          </ion-item>
+        </ion-list>
+  
+  <div *ngIf="!kiji && !spn" style="text-align: center; color:#606060;">
+    <ion-icon style="font-size: 80px;" name="search"></ion-icon>
+          <p>まだ何も検索していないか、検索結果が見つかりません。</p>
+          </div>
+          <div *ngIf="err" style="text-align: center;"><div class="ion-padding"><p>エラーが発生しました。API制限に到達しているか、オフラインの可能性があります。時間を置いて再度お試しください。</p></div></div>
+          <div *ngIf="emp" style="text-align: center;"><div class="ion-padding"><p>検索結果はありませんでした。キーワードを変えて再度お試しください。</p></div></div>
+          <div *ngIf="!kiji && spn" style="text-align: center;"><div class="ion-padding"><ion-spinner name="dots"></ion-spinner></div><p>読み込み中...</p></div>
+  </ion-content>
+  

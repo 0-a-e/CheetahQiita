@@ -1,0 +1,7 @@
+{
+  "name": "qiitareaderV4",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
