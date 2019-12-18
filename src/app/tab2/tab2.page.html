@@ -53,11 +53,16 @@
    <ion-header>
        <div *ngIf="!kiji && !spn" class="progress indeterminate"></div>
        <ion-toolbar>
+          <ion-buttons id="DA" slot="end">
+            <ion-button id="DA">
+              <ion-icon id="DA" name="contrast"></ion-icon>
+              </ion-button>
+            </ion-buttons>
          <ion-title>ホーム</ion-title><!--<button ion-button (click)="presentPopover()"><ion-icon name="more"></ion-icon></button>-->
        </ion-toolbar>
      </ion-header>
    <ion-content>
-       <ion-refresher
+       <ion-refresher slot="fixed"
        (ionRefresh)="ge($event)">
        <ion-refresher-content>
        </ion-refresher-content>

@@ -24,6 +24,14 @@ export class Tab2Page {
   this.navCtrl.push(PopPage);
   }*/
   ionViewWillEnter() {
+    const btn = document.getElementById("DA");
+    btn.addEventListener('click', function() {
+      const body = document.getElementById("body");
+      console.log(body);
+      body.classList.toggle('dark');
+      console.log('クリックされました！');
+    
+  }, false);
     this.count = 2;
     console.log("loadstart1");
     try {
@@ -79,8 +87,7 @@ export class Tab2Page {
         el.innerHTML = `<ion-item><ion-label>${NR.title}</ion-label></ion-item>`;
         list.appendChild(el);
       }
-
-const targets = document.getElementsByClassName('LIS');
+      const targets = document.getElementsByClassName('LIS');
 for(let i = 0; i < targets.length; i++){
   targets[i].addEventListener('click', () => {
     console.log(i + `をクリックしました`);

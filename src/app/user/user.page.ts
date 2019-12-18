@@ -94,7 +94,7 @@ export class UserPage {
         this.tw = 'https://twitter.com/' + ctw;
         this.fb = 'https://facebook.com/' + cfb;
         this.github = 'https://github.com/' + cgithub;
-        this.linkedin = 'https://linkedin.com/' + cli;
+        this.linkedin = 'https://linkedin.com/in/' + cli;
         console.log(this.tw);
         console.log(this.fb);
         console.log(this.github);
