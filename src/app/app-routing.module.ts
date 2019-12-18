@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
+  },
+  {
+    path: 'useritem',
+    loadChildren: () => import('./useritem/useritem.module').then( m => m.UseritemPageModule)
   }
 ];
 @NgModule({

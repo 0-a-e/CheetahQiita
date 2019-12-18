@@ -229,6 +229,18 @@ export class ViewPage {
      console.log(navJ);
      this.router.navigate(['user'],navJ);
   }
+  CMUSI(user) {
+    console.log("run cmusi");
+    console.log(user);
+    let navJ: NavigationExtras = {
+      state: {
+        inner: user
+       }
+    };
+    
+     console.log(navJ);
+     this.router.navigate(['user'],navJ);
+  }
   async rm() {
     this.storage.remove(this.title);
     this.bts = "add";
