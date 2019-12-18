@@ -17,7 +17,6 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
     :host /deep/ .pod {
       text-align: start;
       margin: 0 auto;
-      color: #1a1a1a;
       width: 90%;
     }
     :host /deep/ .pod > h1 { 
