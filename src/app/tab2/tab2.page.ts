@@ -30,7 +30,7 @@ export class Tab2Page {
       console.log("loadsgtart2");
       let headers = new HttpHeaders();
       headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-      const res = this.http.get("https://qiita.com/api/v2/items?per_page=100")
+      const res = this.http.get("https://qiita.com/api/v2/items?per_page=50")
         .subscribe(res => {
           console.log(res);
           this.kiji = res;
@@ -62,28 +62,25 @@ export class Tab2Page {
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     console.log("running> gs");
     try {
-      const res = await this.http.get("https://qiita.com/api/v2/items?per_page=100&page=" + this.count)
+      const res = await this.http.get("https://qiita.com/api/v2/items?per_page=50&page=" + this.count)
         .toPromise(); 
       console.log("RES IS ");
       console.log(res);
       this.count++;
       console.log(this.count);
       //    NE = res["0"]["title"];
-      var ret = res;
-      this.kiji2 = ret;
-      this.RCS = "";
-      for (this.RC = 0; 100 > this.RC; this.RC++) {
+      for (this.RC = 0; 50 > this.RC; this.RC++) {
         var el = document.createElement('div');
         console.log(this.RC);
-        var NR = ret[this.RC];
-        //  this.RCS = NR.title;
+        var NR = res[this.RC];
         console.log(NR);
         el.setAttribute('id', NR.id);
         el.setAttribute('class', 'LIS');
-        el.innerHTML = `<hr><ion-item class="item item-block item-ios" _ngcontent-c1 ><ion-label class="label label-ios label-md" _ngcontent-c1>${NR.title}</ion-label></ion-item>`;
+        el.innerHTML = `<ion-item><ion-label>${NR.title}</ion-label></ion-item>`;
         list.appendChild(el);
       }
-      const targets = document.getElementsByClassName('LIS');
+
+const targets = document.getElementsByClassName('LIS');
 for(let i = 0; i < targets.length; i++){
   targets[i].addEventListener('click', () => {
     console.log(i + `をクリックしました`);
@@ -108,12 +105,12 @@ for(let i = 0; i < targets.length; i++){
   
 }
 
-      refresher.complete();
+      refresher.target.complete();
     } catch (err) { 
       //this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2><p>' + err["status"] +err["error"]["message"] + '.</p>';
       console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
       console.log(err);
-      refresher.complete();
+      refresher.target.complete();
     }
   }
   async ge(refresher) {
@@ -126,12 +123,12 @@ for(let i = 0; i < targets.length; i++){
         .toPromise();
       console.log(res);
       this.kiji = res;
-      refresher.complete();
+      refresher.target.complete();
     } catch (err) { 
       this.spn = '<h2 [ngStyle]="pi">エラーが発生しました。しばらく時間をおいて再度お試しください。</h2><p>' + err["status"] +err["error"]["message"] + '.</p>';
       console.log("大変申し訳ございませんが、エラーが発生しました。アプリを閉じて再度お試しください。");
       console.log(err);
-      refresher.complete();
+      refresher.target.complete();
     }
   }
   }
