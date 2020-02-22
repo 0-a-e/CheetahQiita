@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-buttons id="DA" slot="end">
+        <ion-button id="DA">
+          <ion-icon id="DA" name="contrast"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>
+      ホーム
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed"
+  (ionRefresh)="ge($event)">
+  <ion-refresher-content>
+  </ion-refresher-content>
+</ion-refresher>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">ホーム</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div [innerHTML]="spn"></div>
+
+     <div *ngIf="!kiji && !spn" style="text-align: center;">
+       <h1></h1>
+         <ion-spinner></ion-spinner>
+        <p>読み込み中...</p>
+   </div>
+       <ion-list id ="list" *ngIf="kiji">
+           <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
+               <ion-label>{{kiZ.title}}</ion-label>
+             </ion-item>
+         </ion-list>
+
+     <ion-infinite-scroll threshold="100px" (ionInfinite)="gs($event)">
+         <ion-infinite-scroll-content
+           loadingText="読み込み中...">
+         </ion-infinite-scroll-content>
+       </ion-infinite-scroll>
+</ion-content>

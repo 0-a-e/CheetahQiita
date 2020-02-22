@@ -1,0 +1,7 @@
+{
+  "name": "qiitareader-ionic5-rebuild",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      オフライン保存済みの記事
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher
+          (ionRefresh)="ge($event)" slot="fixed">
+          <ion-refresher-content>
+          </ion-refresher-content>
+          </ion-refresher>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">保存済みの記事</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-list>
+    <ion-item *ngFor="let ki of list" (click)="click(ki)">
+        <ion-label>{{ki}}</ion-label>
+      </ion-item>
+  </ion-list>
+
+  <div *ngIf="!list" style="text-align: center;">
+    <p>まだ保存した記事がありません。</p>
+    </div>
+</ion-content>

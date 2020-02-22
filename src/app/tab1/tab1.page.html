@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <div *ngIf="def && !Kebid">
+    <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    </div>
+  <ion-toolbar>
+    <ion-title>
+    検索
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">検索</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar (search)="ionB(inputs.value)" #inputs animated></ion-searchbar>
+  <p *ngIf="SN">{{SN}}の検索結果を表示しています:</p>
+  <ion-list *ngIf="kiji">
+    <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
+        <ion-label>{{kiZ.title}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+<div *ngIf="!kiji && !spn" style="text-align: center; color:#606060;">
+<ion-icon style="font-size: 80px;" name="search"></ion-icon>
+      <p>まだ何も検索していないか、検索結果が見つかりません。</p>
+      </div>
+      <div *ngIf="err" style="text-align: center;"><div class="ion-padding"><p>エラーが発生しました。API制限に到達しているか、オフラインの可能性があります。時間を置いて再度お試しください。</p></div></div>
+      <div *ngIf="emp" style="text-align: center;"><div class="ion-padding"><p>検索結果はありませんでした。キーワードを変えて再度お試しください。</p></div></div>
+      <div *ngIf="!kiji && spn" style="text-align: center;"><div class="ion-padding"><ion-spinner></ion-spinner></div></div>
+</ion-content>
