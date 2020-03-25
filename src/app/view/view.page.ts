@@ -1,8 +1,11 @@
+import { VqrPage } from './../vqr/vqr.page';
 import { Component, OnInit } from '@angular/core';
 import { Routes, NavigationExtras } from '@angular/router';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { ModalController } from '@ionic/angular';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-view',
@@ -118,7 +121,7 @@ export class ViewPage implements OnInit {
   usurl: any;
   PFIU: any;
   addstyle = "'pre': {'background: '606060'}"
-
+/*
   tagstyle = {
   'background-color': '#EFF4FF',
   'border': 'none',
@@ -132,13 +135,14 @@ export class ViewPage implements OnInit {
   'margin-left': '-1px',
   'margin-bottom': '10px',
   'border-radius': '100px',
-  }
+  }*/
   goodstyle = {
     'text-decoration':'none',
     'font-size': '40px',
-    'color': '#387EF5'
+    'color': '#387EF5',
+    'text-align':'center'
   }
-  constructor(private toastController:ToastController,private storage:Storage,private http:HttpClient,private route: ActivatedRoute, private router: Router) {
+  constructor( public modalCtrl: ModalController,private socialSharing: SocialSharing,private toastController:ToastController,private storage:Storage,private http:HttpClient,private route: ActivatedRoute, private router: Router) {
     this.route.queryParams.subscribe(params => {
       console.log("recive booted");
       if (this.router.getCurrentNavigation().extras.state.inner) {
@@ -160,9 +164,22 @@ export class ViewPage implements OnInit {
     });
 
   }
+  async vqrs(){
+  const modal = await this.modalCtrl.create({
+    component: VqrPage,
+    componentProps: {
+      'url': this.url
+    },
+    swipeToClose: true
+  });
+  return await modal.present();
+}
+  async social() {
+    this.socialSharing.share(this.title, 'subject', null, this.url);
+  }
   async rm() {
       this.storage.remove(this.title);
-      this.bts = "add";
+      this.bts = "cloud-download";
       console.log(this.bts);
       const toast = await this.toastController.create({
         message: 'ダウンロード済みの記事を削除しました。',
@@ -170,6 +187,33 @@ export class ViewPage implements OnInit {
       });
       toast.present();
   }
+  CMUSI(user) {
+    console.log("run cmusi");
+    console.log(user);
+    let navJ: NavigationExtras = {
+      state: {
+        inner: user
+       }
+    };
+    
+     console.log(navJ);
+     this.router.navigate(['user'],navJ);
+  }
+  userinfo() {
+    this.user = this.jsons["user"];
+    let navJ: NavigationExtras = {
+      state: {
+        inner: this.user
+      }
+    };
+      
+    console.log(navJ);
+    this.router.navigate(['user'], navJ);
+  }
+  ta(ins) { 
+    console.log(ins);
+    window.open('https://qiita.com/tags/' + ins + '/', '_system')
+    }
   async add() {
     console.log("RUN");
     var title = this.title;
@@ -216,13 +260,18 @@ export class ViewPage implements OnInit {
     if (this.com == "d") {
       this.bts = "trash";
     } else {
-      this.bts = "add";
+      this.bts = "cloud-download";
     }
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
     const res = this.http.get("https://qiita.com/api/v2/items/"+this.itemid+"/comments")
       .subscribe(res => {
         console.log(res);
+      //  try{
+      //  this.comment = res.reverse();
+     // } catch {
         this.comment = res;
+    //  }
+
   //      this.kiji = res;
   //      this.Fsave = res;
       }, error => {

@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class Tab3Page {
   list: any;
   constructor(private router:Router,private storage:Storage) {}
-  ionViewDidEnter() {
+  ionViewWillLeave() {
     this.load();
   }
   
@@ -18,21 +18,27 @@ export class Tab3Page {
   }
   load() {
     this.storage.keys().then((k) => {
-      console.table(k)
-      this.list = k
+      console.table(k);
+      try {
+        if (typeof k !== 'undefined' && k.length > 0) {
+          console.log("found: " + k);
+          this.list = k;
+        } else {
+          console.log("not found: " + k);
+          this.list = false;
+        }
+      } catch{
+        this.list = false;
+      }
     });
   }
   async ge(refresher) {
     console.log("run GE");
     try {
-      this.storage.keys().then((k) => {
-        console.table(k);
-        this.list = k;
-      });
+      this.load();
       refresher.target.complete();
     } catch (err) {
       setTimeout(() => { refresher.target.complete(), 3000 });
-        console.log(err);
       }
   }
   click(ki) {

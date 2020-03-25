@@ -20,8 +20,13 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      prefersDark.addListener((mediaQuery) => this.toggleDarkTheme(mediaQuery.matches));
+      this.statusBar.backgroundColorByHexString('#606060');
       this.splashScreen.hide();
     });
+  }
+  toggleDarkTheme(shouldAdd) {
+    document.body.classList.toggle('dark', shouldAdd);
   }
 }

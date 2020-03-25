@@ -9,6 +9,18 @@ const routes: Routes = [
   {
     path: 'view',
     loadChildren: () => import('./view/view.module').then( m => m.ViewPageModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then( m => m.UserPageModule)
+  },
+  {
+    path: 'useritem',
+    loadChildren: () => import('./useritem/useritem.module').then( m => m.UseritemPageModule)
+  },
+  {
+    path: 'vqr',
+    loadChildren: () => import('./vqr/vqr.module').then( m => m.VqrPageModule)
   }
 ];
 @NgModule({

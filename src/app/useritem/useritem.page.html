@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ID}}さんの記事</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!kiji" style="margin-top: 30px; text-align: center;">
+    <ion-spinner></ion-spinner>
+  </div>
+        <ion-list *ngIf="kiji">
+            <ion-item *ngFor="let kiZ of kiji" (click)="click(kiZ)">
+                <ion-label>{{kiZ.title}}</ion-label>
+              </ion-item>
+          </ion-list>
+    
+    <div [innerHTML]="spn"></div>
+</ion-content>

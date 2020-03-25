@@ -1,7 +1,49 @@
+<style>
+    .balloon1-left {
+    position: relative;
+    display: inline-block;
+    /*margin: 1em 0 0em 8px;*/
+    border-radius: 0px 30px 30px 30px;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+  }
+  /*
+  .balloon1-left:before {
+    content: "";
+    position: relative;
+    top: 10%;
+    left: -30px;
+    margin-top: -15px;
+    border: 15px solid transparent;
+    border-right: 15px solid #e0edff;
+  }*/
+  .balloon1-left p {
+    margin: 0;
+    padding: 0;
+  }
+  .btm{
+    background: #387EF5;
+    padding-bottom: 20px;
+    padding-top: -8px;
+    text-align: center;
+    font-size: 40px;
+  }
+  </style>
 <ion-header>
   <ion-toolbar>
+
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="social()"><ion-icon name="share-social"></ion-icon></ion-button>
+      <ion-button (click)="vqrs()"><ion-icon name="qr-code-sharp"></ion-icon></ion-button>
+     <ion-button [href]="url"><ion-icon name="open-outline"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
   </ion-toolbar>
@@ -34,8 +76,7 @@
 <div *ngIf="comment == 0">
 <h4>この記事にはコメントがありません。</h4>
 </div>
-
-<div *ngFor="let comments of comment" style="display:flex;">
+<div *ngFor="let comments of comment" style="display:flex; margin-bottom: 10px;">
 <img (click)="CMUSI(comments.user)" [src]=comments.user.profile_image_url style="border-radius: 50px; width: 60px; height: 60px;">
 <div style="display:grid">
 <h5 (click)="CMUSI(comments.user)">　{{comments.user.id}}</h5>
@@ -44,21 +85,18 @@
 </div>
 </div>
 </div>
-
-<hr>
-<div [ngStyle]="goodstyle">
-<ion-icon name="thumbs-up"></ion-icon>
-{{Likecount}}
+<div class="btm">
+<div style="box-shadow: 0px -5px 0px 0px #fff;left: 0; right: 0; margin: 0 auto;width: 40%; height: 69%; padding-top: 10px;text-align: center; border-radius: 0px 0px 150px 150px; color: #387EF5; padding-bottom: 10px;background: #fff;">
+<ion-icon style="margin-top: 5px;" name="heart"></ion-icon>
+<p style="margin: 5px;">{{Likecount}}</p>
 </div>
+<ion-chip *ngFor="let tags of tag" (click)="ta(tags.name)"><ion-label style="color: #fff;">{{tags.name}}</ion-label></ion-chip>
 
-<button [ngStyle]="tagstyle" *ngFor="let tags of tag" (click)="ta(tags.name)">{{tags.name}}</button>
-<a [href]="url" ion-button><ion-icon name="open"></ion-icon></a>
-
-<div (click)=userinfo()>
+<div (click)="userinfo()" style="margin-top: 10px;">
 <img style="border-radius: 100px; width: 50px; height: 50px;" [src]="PFIU">
-<h5 style=" color: #2557D6; text-decoration: none;">{{name}}</h5>
- <p style="text-decoration: none; color: #2557D6;">{{userdesc}}</p>
+<h5 style=" color: #fff; text-decoration: none;">{{name}}</h5>
+ <p style="text-decoration: none; color: #fff;">{{userdesc}}</p>
 </div>
-
+</div>
 </div>
 </ion-content>

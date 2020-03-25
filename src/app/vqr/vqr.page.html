@@ -1,0 +1,17 @@
+<style>
+  .qr {position: absolute; width: 80%; left: 0; right: 0; margin: 0 auto;}
+  </style>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="closemodal()"><ion-icon name="close"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>QRコード</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="text-align: center;">
+  <div class=".qr">
+  <ngx-qrcode qrc-element-type="url" qrc-class="qr" [qrc-value]="url" ></ngx-qrcode>
+  </div>
+</ion-content>

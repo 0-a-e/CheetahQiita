@@ -17,13 +17,13 @@
       <ion-title size="large">保存済みの記事</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
+  <ion-list *ngIf="list">
     <ion-item *ngFor="let ki of list" (click)="click(ki)">
         <ion-label>{{ki}}</ion-label>
       </ion-item>
   </ion-list>
 
-  <div *ngIf="!list" style="text-align: center;">
+  <div *ngIf="!list" style="text-align: center; color: #606060;">
     <p>まだ保存した記事がありません。</p>
     </div>
 </ion-content>
